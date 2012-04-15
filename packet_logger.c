@@ -1,3 +1,7 @@
+/* Copyright Tim Skinner 2012
+ * This code is covered under the GNU Lesser General Public License.
+ * See LICENSE for the full text of the license covering this file.
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
