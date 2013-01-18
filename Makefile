@@ -6,14 +6,18 @@ CFLAGS=-O3 \
        -Werror\
        -Wextra\
        -pedantic\
-       -Wno-unused
+       -Wno-unused\
+       $(shell pkg-config --cflags libnetfilter_queue)
 
-LFLAGS=-lnetfilter_queue
+LFLAGS=$(shell pkg-config --libs libnetfilter_queue)
 
-all: pktlogger
+all: packet_logger
 
-pktlogger:
-	$(CC) $(CFLAGS) $(LFLAGS) packet_logger.c -o pktlogger
+%.o:%.c
+	$(CC) -c $(CFLAGS) $(<) -o $(@)
+
+packet_logger: packet_logger.o
+	$(CC) $(<) $(LFLAGS) -o $(@)
 
 clean:
 	-rm -f *.o

@@ -87,7 +87,7 @@ error:
 static int log_packet(struct nfq_q_handle* qh, struct nfgenmsg* nfmsg, struct nfq_data* dat, void* data)
 {
     struct nfqnl_msg_packet_hdr* nfq_hdr = nfq_get_msg_packet_hdr(dat);
-    unsigned char* payload;
+    char* payload;
     int len = nfq_get_payload(dat,&payload);
     printf("---\n");
     printf("got a packet - len %d\n",len);
